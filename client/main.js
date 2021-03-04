@@ -62,7 +62,7 @@ function listPremierLeague(){
 function listSeriaA(){
   $('#group').empty()
   let year = new Date().getFullYear() - 1
-  // console.log(year);
+
   $.ajax({
     url:`https://api-football-beta.p.rapidapi.com/standings?season=${year}&league=135`,
     method: "GET",
@@ -119,13 +119,13 @@ function listLaLiga(){
       list.forEach(e => {
         $('#group').append(`
         <tr>
-        <td>${num}</td>
-        <td><img src="${e.team.logo}" width="20" height="20"> ${e.team.name}</td>
-        <td>${e.all.played}</td>
-        <td>${e.all.win}</td>
-        <td>${e.all.draw}</td>
-        <td>${e.all.lose}</td>
-        <td>${e.points}</td>
+          <td>${num}</td>
+          <td><img src="${e.team.logo}" width="20" height="20"> ${e.team.name}</td>
+          <td>${e.all.played}</td>
+          <td>${e.all.win}</td>
+          <td>${e.all.draw}</td>
+          <td>${e.all.lose}</td>
+          <td>${e.points}</td>
         </tr>
         `)
         num++
