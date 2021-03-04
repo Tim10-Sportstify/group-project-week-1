@@ -1,22 +1,28 @@
 $("document").ready(() => {
 
-    $("#btn-submit").on("click", (e) => {
+    $("#btn-soccer").on("click", (e) => {
         e.preventDefault()
-        loadNews()
+        loadNews("soccer")
+    })
+
+    $("#btn-nba").on("click", (e) => {
+        e.preventDefault()
+        loadNews("nba")
     })
 })
 
-function loadNews() {
+function loadNews(type) {
     $("#row1").empty()
     $("#row2").empty()
-    let apiKey = "2dae9ce0e99a41f0a612702045dd656a"
+    let apiKey = "5ed21ad4a2924a7cb59957a289f0c9c0"
     let monthTo = (new Date()).getMonth() + 1
     let dateTo = `${(new Date()).getFullYear()}-${monthTo}-${(new Date().getDate())}`
     let monthFrom = (new Date()).getMonth()
     let dateFrom = `${(new Date()).getFullYear()}-${monthFrom}-${(new Date().getDate())}`
+    let page = Math.floor(Math.random()* 15)
 
     $.ajax({
-        url: `https://newsapi.org/v2/everything?q=soccer&from=${dateFrom}&to=${dateTo}&sortBy=popularity&pageSize=6&page=1&apiKey=${apiKey}&language=en`,
+        url: `https://newsapi.org/v2/everything?q=${type}&from=${dateFrom}&to=${dateTo}&sortBy=popularity&pageSize=6&page=${page}&apiKey=${apiKey}&language=en`,
         mothod: "GET"
     })
     .then((response) => {
