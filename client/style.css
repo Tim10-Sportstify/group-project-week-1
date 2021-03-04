@@ -1,0 +1,22 @@
+
+/* style container news */
+#news-feed {
+    position: flex;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+}
+.card-text {
+    /* width: 200px; */
+    /* height: 200px; */
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.img-card {
+    width:262px;
+    height:162px;
+}
