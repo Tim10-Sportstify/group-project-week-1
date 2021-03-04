@@ -1,18 +1,15 @@
-const express  = require('express')
-const cors = require('cors')
+const cors = require('cors');
+const express = require('express');
 const app = express()
-const port = 3000
+const PORT = 3000
+const router = require('./routes');
+
 
 app.use(cors())
-app.use(express.urlencoded({extended : true}))
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-
-
-
-
-
-
-
-
-app.listen(port,()=> console.log(`app run in port ==>${port}`))
+app.use(router)
+app.listen(PORT, () => {
+  console.log(`Sportstify is running on http://localhost:${PORT}`)
+})
