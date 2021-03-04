@@ -51,6 +51,7 @@ class UserController {
       if (err.message === 'Invalid email or password') {
         res.status(400).json({message: 'Invalid email or password'})
       } else {
+        console.log(err);
         res.status(500).json({message: 'Invalid server error'})
       }
     })

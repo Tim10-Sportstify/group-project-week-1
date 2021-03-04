@@ -1,4 +1,4 @@
-const baseURL = "http://127.0.0.1:3000/"
+const baseURL = "http://localhost:3001/"
 
 $(document).ready(() => {
   checkLocalStorage()
@@ -65,8 +65,8 @@ function logIn() {
     localStorage.setItem("name", response.name)
     checkLocalStorage()
   })
-  .fail(err => {
-    console.log(err);
+  .fail((err, res) => {
+    console.log(err, res);
   })
   .always(() => {
     $('#emaillogin').val("")
@@ -304,4 +304,30 @@ function listLaLiga(){
       console.log('hallo');
     })
   
+}
+
+
+function generateRandomAvatar(name) {
+  $('#userAvatar').attr('src', `https://ui-avatars.com/api/?rounded=true&background=random&name=${name}`)
+}
+generateRandomAvatar()
+
+function onSignIn(googleUser) {
+  const id_token = googleUser.getAuthResponse().id_token;
+  $.ajax({
+      method: 'POST',
+      url: `${baseURL}googleLogin`,
+      data: {
+        id_token
+      }
+    })
+    .done(res => {
+      localStorage.setItem('name', res.name)
+      localStorage.setItem('access_token', res.access_token)
+      console.log(res);
+      checkLocalStorage()
+    })
+    .fail((err, res) => {
+      console.log(err, res);
+    })
 }
