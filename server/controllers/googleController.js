@@ -1,6 +1,6 @@
-const {OAuth2Client} = require('google-auth-library');
-const{User} = require('../models')
-const {generateToken} = require('../helpers/jwt')
+const { OAuth2Client } = require('google-auth-library');
+const { User } = require('../models')
+const { generateToken } = require('../helpers/jwt')
 
 class googleSignInController {
 
@@ -18,14 +18,6 @@ class googleSignInController {
         console.log(payload);
         email = payload.email
         name = payload.name
-        // const [user, created] = await User.findOrCreate({
-        //     where: {email},
-        //     defaults: {
-        //       name,
-        //       password: `${email}${String(new Date())}`
-        //     }
-        //   });
-        // if()
         
         return User.findOne({
             where: {

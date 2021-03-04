@@ -4,7 +4,6 @@ const app = express()
 const PORT = 3001
 const router = require('./routes');
 
-
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())

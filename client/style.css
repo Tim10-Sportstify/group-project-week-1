@@ -26,10 +26,6 @@ a {
   --input-padding-y: .75rem;
 }
 
-body {
-  background: linear-gradient(to right, #3c597e, #53a0d3);
-}
-
 .card-signin {
   border: 0;
   border-radius: 1rem;
@@ -119,6 +115,14 @@ body {
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
   color: #777;
+}
+
+#card1:hover {
+  box-shadow: 0 8px 16px 0 rgba(1,1,0,0.2);
+}
+
+#card2:hover {
+  box-shadow: 0 8px 16px 0 rgba(1,1,0,0.2);
 }
 
 .btn-google {

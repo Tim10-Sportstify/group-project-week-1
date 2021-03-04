@@ -12,7 +12,8 @@ $(document).ready(() => {
     showRegister();
   })
 
-  $("#btn-logout").on("click", () => {
+  $("#btn-logout").on("click", (e) => {
+    e.preventDefault();
     logOut();
   })
 
@@ -79,6 +80,7 @@ function showRegister() {
   $('#classment').hide()
   $("#loginpage").hide()
   $("#afterlogin").hide()
+  $("#futer").hide()
 }
 
 function register() {
@@ -100,6 +102,7 @@ function register() {
     $("#loginpage").show()
     $("#registerpage").hide()
     $("#afterlogin").hide()
+    $("#futer").hide()
   })
   .fail(err => {
     console.log(err)
@@ -107,26 +110,40 @@ function register() {
 }
 
 function checkLocalStorage() {
+  $("#greetings").empty()
   if(localStorage.access_token) {
+    $("#greetings").append(
+      `
+      <h1 style="color: white;">Hi, ${localStorage.getItem('name')} welcome to Sportstify</h1>
+      `
+    )
+    loadNews("soccer")
     $("#afterlogin").show()
+    $('#classment').hide()
     $("#loginpage").hide()
     $("#registerpage").hide()
+    generateRandomAvatar(localStorage.getItem('name'))
   } else {
     $("#loginpage").show()
     $("#registerpage").hide()
     $("#afterlogin").hide()
+    $("#futer").hide()
   }
 }
 
 function logOut() {
   localStorage.removeItem("access_token")
+  localStorage.removeItem("name")
+  localStorage.removeItem("oauth2_ss::http://localhost:8080::1::DEFAULT::_ss_")
+  localStorage.removeItem("promo")
   checkLocalStorage()
 }
 
 function loadNews(type) {
+    console.log(type, '<<<< Masuk')
     $("#row1").empty()
     $("#row2").empty()
-    let apiKey = "5ed21ad4a2924a7cb59957a289f0c9c0"
+    let apiKey = "83d779bef41c4808929e741b3b73e487"
     let monthTo = (new Date()).getMonth() + 1
     let dateTo = `${(new Date()).getFullYear()}-${monthTo}-${(new Date().getDate())}`
     let monthFrom = (new Date()).getMonth()
@@ -146,8 +163,8 @@ function loadNews(type) {
                     $("#row1").append(
                         // `<h1> test </h1>`
                         `
-                        <div class="card m-5" style="width: 18rem;">
-                            <img class="img-card" src="${response.articles[i].urlToImage}" class="card-img-top" alt="imgNews">
+                        <div id="card1" class="card m-5 bg-body rounded" style="width: 18rem;">
+                            <img style="width: 100%;" class="img-card" src="${response.articles[i].urlToImage}" class="card-img-top" alt="imgNews">
                             <div class="card-body">
                                 <h5 class="card-title">${response.articles[i].title}</h5>
                                 <p class="card-text">${response.articles[i].description}</p>
@@ -164,8 +181,8 @@ function loadNews(type) {
                 } else {
                     $("#row2").append(
                         `
-                        <div class="card m-5" style="width: 18rem;">
-                            <img class="img-card" src="${response.articles[i].urlToImage}" class="card-img-top" alt="imgNews">
+                        <div id="card2" class="card m-5" style="width: 18rem;">
+                            <img style="width: 100%;" class="img-card" src="${response.articles[i].urlToImage}" class="card-img-top" alt="imgNews">
                             <div class="card-body">
                                 <h5 class="card-title">${response.articles[i].title}</h5>
                                 <p class="card-text">${response.articles[i].description}</p>
@@ -193,7 +210,7 @@ function listPremierLeague(){
     method: "GET",
     headers : {
       "x-rapidapi-host" : "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-key" : "40d6015370msh6b2bef29c28104ap165f74jsnc05db6016311",
+      "x-rapidapi-key" : "1efb766545msh90eb6827270a45cp1d75adjsn67c272789963",
       "useQueryString" : true
     }
   })
@@ -222,7 +239,6 @@ function listPremierLeague(){
     .always(_ =>{
       console.log('hallo');
     })
-  
 }
 
 function listSeriaA(){
@@ -234,7 +250,7 @@ function listSeriaA(){
     method: "GET",
     headers : {
       "x-rapidapi-host" : "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-key" : "40d6015370msh6b2bef29c28104ap165f74jsnc05db6016311",
+      "x-rapidapi-key" : "1efb766545msh90eb6827270a45cp1d75adjsn67c272789963",
       "useQueryString" : true
     }
   })
@@ -274,7 +290,7 @@ function listLaLiga(){
     method: "GET",
     headers : {
       "x-rapidapi-host" : "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-key" : "40d6015370msh6b2bef29c28104ap165f74jsnc05db6016311",
+      "x-rapidapi-key" : "1efb766545msh90eb6827270a45cp1d75adjsn67c272789963",
       "useQueryString" : true
     }
   })
@@ -306,11 +322,9 @@ function listLaLiga(){
   
 }
 
-
 function generateRandomAvatar(name) {
-  $('#userAvatar').attr('src', `https://ui-avatars.com/api/?rounded=true&background=random&name=${name}`)
+  $('#userAvatar').attr('src', `https://ui-avatars.com/api/?rounded=true&background=2596be&color=FFFF&name=${name}`)
 }
-generateRandomAvatar()
 
 function onSignIn(googleUser) {
   const id_token = googleUser.getAuthResponse().id_token;
