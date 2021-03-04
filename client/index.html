@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-signin-client_id" content="663690879697-t6tl6dlmb4umv5ta8s5ofm2kh6k2t04d.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="905728010723-vb46n1ag9vr7lvmgrjl6eust8vurafmc.apps.googleusercontent.com">
   <title>Sportstify</title>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="./style.css">
@@ -15,39 +15,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
   <!-- FONT -->
 </head>
-<body>
-  
+<body style="background: linear-gradient(to right, #3c597e, #53a0d3)">
   
   <!-- LOGIN -->
-  <div id="loginpage">
-    <h2 class="mt-5" style="color: whitesmoke; text-align: center; font-family: 'Poppins', sans-serif;">Sportstify</h2>
-    <div class="mt-1">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
-              <div class="card-body">
-                <h5 class="card-title text-center">Sign In</h5>
-                <form class="form-signin">
-                  <div class="form-label-group">
-                    <input type="email" id="emaillogin" class="form-control" placeholder="Email address" required autofocus>
-                    <label for="emaillogin">Email address</label>
-                  </div>
-
-                  <div class="form-label-group">
-                    <input type="password" id="passwordlogin" class="form-control" placeholder="Password" required>
-                    <label for="passwordlogin">Password</label>  
-                  </div>
-                  
-                  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="btn-submit">Sign in</button>
-                  <br>
-                  <h5 class="font-weight-light text-center">or</h5>
-                  <br>
-                  <!-- <img  id="userAvatar"> -->
-                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                  <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">Sign in with Google</button> -->
-                  <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-go-sign-up-page">Sign Up</button>
-                </form>
+  <div class="container mb-5">
+    <div id="loginpage">
+      <h2 class="mt-5" style="color: whitesmoke; text-align: center; font-family: 'Poppins', sans-serif;">Sportstify</h2>
+      <div class="mt-1">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="card card-signin my-5">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Sign In</h5>
+                  <form class="form-signin">
+                    <div class="form-label-group">
+                      <input type="email" id="emaillogin" class="form-control" placeholder="Email address" required autofocus>
+                      <label for="emaillogin">Email address</label>
+                    </div>
+  
+                    <div class="form-label-group">
+                      <input type="password" id="passwordlogin" class="form-control" placeholder="Password" required>
+                      <label for="passwordlogin">Password</label>  
+                    </div>
+                    
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="btn-submit">Sign in</button>
+                    <br>
+                    <h5 class="font-weight-light text-center">or</h5>
+                    <br>
+                    
+                    <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">Sign in with Google</button> -->
+                    <button id="google-btn" class="btn btn-lg btn-block g-signin2" data-onsuccess="onSignIn"></button>
+                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-go-sign-up-page">Sign Up</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -58,35 +59,37 @@
   <!-- END LOGIN PAGE -->
 
   <!-- REGISTER -->
-  <div id="registerpage">
-    <h2 class="mt-5" style="color: whitesmoke; text-align: center;font-family: 'Poppins', sans-serif;">Sportstify</h2>
-    <div class="mt-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
-              <div class="card-body">
-                <h5 class="card-title text-center">Sign Up</h5>
-                <form class="form-signin">
-
-                  <div class="form-label-group">
-                    <input type="text" id="reg-name" class="form-control" placeholder="Full Name" required autofocus>
-                    <label for="reg-name">Full Name</label>
-                  </div>
-
-                  <div class="form-label-group">
-                    <input type="email" id="reg-email" class="form-control" placeholder="Email address" required autofocus>
-                    <label for="reg-email">Email address</label>
-                  </div>
-    
-                  <div class="form-label-group">
-                    <input type="password" id="reg-password" class="form-control" placeholder="Password" required>
-                    <label for="reg-password">Password</label>
-                  </div>
-                  <hr class="my-4">
-
-                  <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-submit-signup">Sign Up</button>
-                </form>
+  <div class="container">
+    <div id="registerpage">
+      <h2 class="mt-5" style="color: whitesmoke; text-align: center;font-family: 'Poppins', sans-serif;">Sportstify</h2>
+      <div class="mt-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="card card-signin my-5">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Sign Up</h5>
+                  <form class="form-signin">
+  
+                    <div class="form-label-group">
+                      <input type="text" id="reg-name" class="form-control" placeholder="Full Name" required autofocus>
+                      <label for="reg-name">Full Name</label>
+                    </div>
+  
+                    <div class="form-label-group">
+                      <input type="email" id="reg-email" class="form-control" placeholder="Email address" required autofocus>
+                      <label for="reg-email">Email address</label>
+                    </div>
+      
+                    <div class="form-label-group">
+                      <input type="password" id="reg-password" class="form-control" placeholder="Password" required>
+                      <label for="reg-password">Password</label>
+                    </div>
+                    <hr class="my-4">
+  
+                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-submit-signup">Sign Up</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -98,7 +101,7 @@
 
   <!-- AFTER LOGIN -->
   <div id="afterlogin">
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="background: linear-gradient(to right, #3c597e, #53a0d3);">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="background-color: black;">
       <div class="container">
         <a class="navbar-brand" href="#" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Sportstify</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,13 +110,22 @@
         <div id="navbarNav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#aftersignin">News</a>
+              <a class="nav-link active" aria-current="page"  id="btn-soccer">Soccer</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#text-add">Standing</a>
+              <a class="nav-link active" aria-current="page"  id="btn-nba">NBA</a>
             </li>
             <li class="nav-item">
-              <a id="btn-logout" class="nav-link" style="color: black;">Sign out</a>
+              <a class="nav-link active" aria-current="page"  id="Premier_League">EPL</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  id="Serie_A">Serie A</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  id="La_Liga">La Liga</a>
+            </li>
+            <li class="nav-item">
+              <a id="btn-logout" class="nav-link" style="color:rgb(216, 29, 29);">Sign out</a>
             </li>
           </ul>
         </div>
@@ -121,22 +133,23 @@
     </nav>
 
     <!-- CONTENT -->
-    <div style="margin-top: 50px;">
-      <input type="submit" class="btn btn-primary" id="btn-soccer" value="Soccer">
-      <input type="submit" class="btn btn-primary" id="btn-nba" value="Nba">
-    </div>>
+    <!-- SAY HI -->
+    <div style="position: static; margin-left: 700px; margin-top: 100px;">
+      <img id="userAvatar">
+    </div>
+    <div id="greetings" style="margin-top: 30px; text-align: center;">
+      
+    </div>
+    <!-- SAY HI -->
+
     <!-- CONTAINER NEWS -->
-    <div class="container-fluid" id="news-feed">
+    <div class="container-fluid mb-5" id="news-feed">
       <div class="row d-flex justify-content-center py-3" id="row1"></div>
       <div class="row d-flex justify-content-center py-3" id="row2"></div>
     </div>
     
     <!-- AKHIR CONTENT -->
     <div>
-      <button class="btn btn-warning" id="Premier_League">Premier League</button>
-      <button class="btn btn-warning" id="Serie_A">Serie A</button>
-      <button class="btn btn-warning" id="La_Liga">La Liga</button>
-      
       <!-- TABLE LEAGUE -->
       <div class="container" id="classment">
         <table class="table">
@@ -159,13 +172,12 @@
     </div>
     <!-- END TABLE -->
   
-    <!-- FOOTER -->
-    <!-- <footer class="pb-1 pt-3 mt-5" style="background-color: black;">
-      <p style="color: antiquewhite; text-align: center;">••••</p>
-    </footer> -->
-    <!-- AKHIR FOOTER -->
   </div>
   <!-- END AFTER LOGIN -->
+
+  <footer id="futer" class="pb-1 pt-3 d-inline-block fixed-bottom" style="background-color: black; width: 100%;">
+    <p style="color: rgb(253, 249, 244); text-align: center;">Created by TIM10</p>
+  </footer>
 
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
