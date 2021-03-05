@@ -101,6 +101,7 @@ function register() {
   })
   .done(response => {
     console.log(response)
+    
     $("#loginpage").show()
     $("#registerpage").hide()
     $("#afterlogin").hide()
