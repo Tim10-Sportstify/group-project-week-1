@@ -14,10 +14,12 @@ $(document).ready(() => {
 
   $("#btn-logout").on("click", (e) => {
     e.preventDefault();
+    logOutGoogle()
     logOut();
   })
 
-  $("#btn-submit-signup").on("click", () => {
+  $("#btn-submit-signup").on("click", (e) => {
+    e.preventDefault()
     register();
   })
 
@@ -99,6 +101,7 @@ function register() {
   })
   .done(response => {
     console.log(response)
+    
     $("#loginpage").show()
     $("#registerpage").hide()
     $("#afterlogin").hide()
@@ -143,7 +146,7 @@ function loadNews(type) {
     console.log(type, '<<<< Masuk')
     $("#row1").empty()
     $("#row2").empty()
-    let apiKey = "83d779bef41c4808929e741b3b73e487"
+    let apiKey = "5ed21ad4a2924a7cb59957a289f0c9c0"
     let monthTo = (new Date()).getMonth() + 1
     let dateTo = `${(new Date()).getFullYear()}-${monthTo}-${(new Date().getDate())}`
     let monthFrom = (new Date()).getMonth()
@@ -343,5 +346,15 @@ function onSignIn(googleUser) {
     })
     .fail((err, res) => {
       console.log(err, res);
+    })
+}
+
+function logOutGoogle() {
+    $.ajax({
+        method: "GET",
+        url: "https://mail.google.com/mail/u/0/?logout&hl=en"
+    })
+    .done(res => {
+        logOut()
     })
 }

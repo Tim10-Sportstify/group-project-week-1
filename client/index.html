@@ -43,10 +43,11 @@
                     <br>
                     <h5 class="font-weight-light text-center">or</h5>
                     <br>
-                    
-                    <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">Sign in with Google</button> -->
-                    <button id="google-btn" class="btn btn-lg btn-block g-signin2" data-onsuccess="onSignIn"></button>
-                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-go-sign-up-page">Sign Up</button>
+                    <div class="btn btn-block text-uppercase">
+                      <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">Sign in with Google</button> -->
+                      <button id="google-btn" class="g-signin2" data-onsuccess="onSignIn"></button>
+                    </div>
+                      <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-go-sign-up-page">Sign Up</button>
                   </form>
                 </div>
               </div>
@@ -86,8 +87,8 @@
                       <label for="reg-password">Password</label>
                     </div>
                     <hr class="my-4">
-  
-                    <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-submit-signup">Sign Up</button>
+                    
+                      <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit" id="btn-submit-signup">Sign Up</button>
                   </form>
                 </div>
               </div>
@@ -125,7 +126,7 @@
               <a class="nav-link active" aria-current="page"  id="La_Liga">La Liga</a>
             </li>
             <li class="nav-item">
-              <a id="btn-logout" class="nav-link" style="color:rgb(216, 29, 29);">Sign out</a>
+              <a id="btn-logout" class="nav-link" style="color:rgb(216, 29, 29);" onclick="signOut();">Sign out</a>
             </li>
           </ul>
         </div>
@@ -182,6 +183,14 @@
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./main.js"></script>
+  <script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+  </script>
   <!-- END OF SCRIPT -->
 </body>
 </html>
