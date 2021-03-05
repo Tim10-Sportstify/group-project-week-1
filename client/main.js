@@ -40,7 +40,7 @@ $(document).ready(() => {
 
   $('#Serie_A').on('click', (e)=>{
     $('#classment').show()
-    listSeriaA()
+    listSeriaA('Serie_A')
   })
 
   $('#La_Liga').on('click', (e)=>{
@@ -154,10 +154,10 @@ function loadNews(type) {
     let page = Math.floor(Math.random()* 15)
 
     $.ajax({
-        url: `https://newsapi.org/v2/everything?q=${type}&from=${dateFrom}&to=${dateTo}&sortBy=popularity&pageSize=6&page=${page}&apiKey=${apiKey}&language=en`,
-        mothod: "GET"
+        url : `https://newsapi.org/v2/everything?q=${type}&from=${dateFrom}&to=${dateTo}&sortBy=popularity&pageSize=6&page=${page}&apiKey=${apiKey}&language=en`,
+        method: "GET",
     })
-    .then((response) => {
+    .done((response) => {
         // console.log(response.articles)
         for(let i = 0; i < response.articles.length; i++) {
             response.articles[i].publishedAt = `${(new Date(response.articles[i].publishedAt)).toDateString()} ${(new Date(response.articles[i].publishedAt)).toLocaleTimeString()}`
@@ -202,19 +202,28 @@ function loadNews(type) {
                 }
             }
     })
+    .fail((e, t) =>{
+      console.log(e, t);
+    })
 }
 
 function listPremierLeague(){
+  // let id
+  // if (league === 'Premier_League') {
+  //   id = 39
+  // } else if(league === 'Serie_A'){
+  //   id = 135
+  // } else if (league === 'La_Liga'){
+  //   id = 140
+  // }
   $('#group').empty()
   let year = new Date().getFullYear() - 1
-  
+  console.log(baseURL+'standings');
   $.ajax({
-    url:`https://api-football-beta.p.rapidapi.com/standings?season=${year}&league=39`,
+    url: baseURL+'standings/pR',
     method: "GET",
     headers : {
-      "x-rapidapi-host" : "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-key" : "1efb766545msh90eb6827270a45cp1d75adjsn67c272789963",
-      "useQueryString" : true
+      access_token : localStorage.getItem('access_token')
     }
   })
     .done(response =>{
@@ -247,14 +256,13 @@ function listPremierLeague(){
 function listSeriaA(){
   $('#group').empty()
   let year = new Date().getFullYear() - 1
+  // console.log(baseURL+'standings');
 
   $.ajax({
-    url:`https://api-football-beta.p.rapidapi.com/standings?season=${year}&league=135`,
+    url: baseURL+'standings/sA',
     method: "GET",
     headers : {
-      "x-rapidapi-host" : "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-key" : "1efb766545msh90eb6827270a45cp1d75adjsn67c272789963",
-      "useQueryString" : true
+      access_token : localStorage.getItem('access_token')
     }
   })
     .done(response =>{
@@ -287,14 +295,12 @@ function listSeriaA(){
 function listLaLiga(){
   $('#group').empty()
   let year = new Date().getFullYear() - 1
-  // console.log(year);
+
   $.ajax({
-    url:`https://api-football-beta.p.rapidapi.com/standings?season=${year}&league=140`,
+    url: baseURL+'standings/lL',
     method: "GET",
     headers : {
-      "x-rapidapi-host" : "api-football-beta.p.rapidapi.com",
-      "x-rapidapi-key" : "1efb766545msh90eb6827270a45cp1d75adjsn67c272789963",
-      "useQueryString" : true
+      access_token : localStorage.getItem('access_token')
     }
   })
     .done(response =>{
