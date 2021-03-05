@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "game282",
+    "password": "asdf",
     "database": "sportstify",
     "host": "localhost",
     "dialect": "postgres"
